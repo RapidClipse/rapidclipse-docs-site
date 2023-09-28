@@ -1,0 +1,28 @@
+name: Antora Site with Lunr Search
+
+on:
+  workflow_dispatch:
+
+jobs:
+  antora:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: fusion-engineering/setup-git-credentials@v2
+      with:
+        credentials: ${{secrets.GIT_CREDENTIALS}}    
+    - name: Antora Site with Lunr Search
+      uses: ghost-420/antora-lunr-site-action@v1.0
+      with:
+        antora_playbook: antora-playbook.yml
+        site_sources_path: ""
+      env:
+        GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
+    - name: Deploy to site branch
+      uses: JamesIves/github-pages-deploy-action@4.1.2
+      with:
+        branch: site # The branch the action should deploy to.
+        folder: site # The folder the action should deploy.
+        clean-exclude: >
+          index.html
+        token: ${{ secrets.GITHUB_TOKEN }}
