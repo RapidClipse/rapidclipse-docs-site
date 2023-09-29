@@ -5,34 +5,35 @@ on:
     branches:
       - master  # Main branch
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16  # Node.js version
-
-      - name: Install Antora
-        run: npm install -g @antora/cli@2  # Antora version you want
-
-      - name: Build Antora Documentation
-        run: antora antora-playbook.yml  # Playbook file
-
-      - name: Install Lunr Search Extension
-        run: npm install @antora/lunr
-
-      - name: Generate Lunr Search Index
-        run: antora --generate --search-index
-
+          node-version: 18  # Node.js version
+      - name: Install Antora and the Antora Lunr Extension
+        run: npm i antora @antora/lunr-extension
+      - name: Generate Site
+        run: npx antora antora-playbook.yml
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: build/site
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: site  # Output directory
-          publish_branch: site   # Branch for deployment
+        id: deployment
+        uses: actions/deploy-pages@v2
