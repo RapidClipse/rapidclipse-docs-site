@@ -4,7 +4,7 @@ site:
   robots: allow
 content:
   sources:
-  - url: https://${{ secrets.TOKEN }}:@github.com/RapidClipse/rapidclipse.git
+  - url: https://${env.TOKEN}:@github.com/RapidClipse/rapidclipse.git
     branches: release/11.0
     start_path: docs
 asciidoc:
