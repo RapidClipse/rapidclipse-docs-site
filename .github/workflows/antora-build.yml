@@ -27,7 +27,7 @@ jobs:
       - name: Install Antora and the Antora Lunr Extension
         run: npm i antora @antora/lunr-extension
       - name: Generate Site
-        run: TOKEN=${{ secrets.TOKEN }} npx antora antora-playbook.yml --stacktrace
+        run: npx antora --env TOKEN=${{ secrets.TOKEN }} antora-playbook.yml --fetch --stacktrace
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
