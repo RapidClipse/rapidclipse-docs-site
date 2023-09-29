@@ -1,28 +1,38 @@
-name: Antora Site with Lunr Search
+name: Antora Documentation Build
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master  # Main branch
 
 jobs:
-  antora:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
-    - uses: fusion-engineering/setup-git-credentials@v2
-      with:
-        credentials: ${{secrets.GIT_CREDENTIALS}}    
-    - name: Antora Site with Lunr Search
-      uses: ghost-420/antora-lunr-site-action@v1.0
-      with:
-        antora_playbook: antora-playbook.yml
-        site_sources_path: ""
-      env:
-        GIT_CREDENTIALS: ${{secrets.GIT_CREDENTIALS}}
-    - name: Deploy to site branch
-      uses: JamesIves/github-pages-deploy-action@4.1.2
-      with:
-        branch: site # The branch the action should deploy to.
-        folder: site # The folder the action should deploy.
-        clean-exclude: >
-          index.html
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18  # Node.js version
+
+      - name: Install Antora
+        run: npm install -g @antora/cli@2  # Antora version you want
+
+      - name: Build Antora Documentation
+        run: antora antora-playbook.yml  # Playbook file
+
+      - name: Install Lunr Search Extension
+        run: npm install @antora/lunr
+
+      - name: Generate Lunr Search Index
+        run: antora --generate --search-index
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site  # Output directory
+          publish_branch: site   # Branch for deployment
