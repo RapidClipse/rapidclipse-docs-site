@@ -39,6 +39,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
         with:
-          github_token: ${{ secrets.token }}
+          github_token: ${{ secrets.TOKEN }}
           publish_dir: site 
           publish_branch: site 
