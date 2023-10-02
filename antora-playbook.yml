@@ -5,7 +5,7 @@ site:
 content:
   sources:
   - url: https://github.com/RapidClipse/rapidclipse.git
-    branches: release/11.0
+    branches: /11.0
     start_path: docs
 asciidoc:
   attributes:
