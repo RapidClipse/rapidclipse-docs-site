@@ -1,6 +1,6 @@
 name: Antora Documentation Build
 
-on: workflow_call
+on: workflow_dispatch
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
