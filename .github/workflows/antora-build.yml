@@ -1,9 +1,9 @@
 name: Antora Documentation Build
 
 on:
-  push:
-    branches:
-      - master  # Main branch
+  repository_dispatch:
+    types:
+      - trigger-antora-build
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
