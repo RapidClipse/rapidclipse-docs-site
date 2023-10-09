@@ -15,8 +15,6 @@ ui:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files: ./supplemental-ui
-  favicon:
-    path: ./supplemental-ui/images/RCFavicon_32x32.png
 output:
   dir: ./site
 antora:
