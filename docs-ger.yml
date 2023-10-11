@@ -3,7 +3,7 @@ site:
   url: https://info.rapidclipse.com/ger
   start_page: index.adoc
 content:
-  edit-url: 'https://info.rapidclipse.com/ger/{refname}/{path}'
+  edit-url: 'https://info.rapidclipse.com/ger/master'
   sources:
   - url: https://github.com/EliasKeilhammer-XDEV/AntoraTest
     start_path: docs/ger
