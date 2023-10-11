@@ -1,6 +1,6 @@
 footer.footer {
-  background-color: var(--footer-background);
-  color: var(--footer-font-color);
+	color: #fff;
+	background-color: #1A1722;
   font-size: calc(15 / var(--rem-base) * 1rem);
   line-height: var(--footer-line-height);
   padding: 1.5rem;
@@ -11,5 +11,5 @@ footer.footer {
 }
 
 .footer a {
-  color: var(--footer-link-font-color);
+  color: #fff;
 }
