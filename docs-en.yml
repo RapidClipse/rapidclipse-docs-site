@@ -1,6 +1,6 @@
 site:
   title: RapidClipse Reference Manual
-  url: https://info.rapidclipse.com/manual/en
+  url: https://info.rapidclipse.com/en
   start_page: index.adoc
 content:
   sources:
