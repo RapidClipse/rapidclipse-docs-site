@@ -14,7 +14,7 @@ ui:
   supplemental_files: ./supplemental-ui
 output:
   clean: true
-  dir: ./output/ger
+  dir: ./site/ger
 runtime:
   fetch: true
   cache_dir: ./cache
