@@ -1,0 +1,27 @@
+site:
+  title: RapidClipse Reference Manual
+  url: https://info.rapidclipse.com/manual/ger
+  start_page: index.adoc
+content:
+  sources:
+  - url: https://github.com/EliasKeilhammer-XDEV/AntoraTest
+    start_path: docs/ger
+    branches: [main]
+ui: 
+  bundle:
+    url: ./theme/build/ui-bundle.zip
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+output:
+  clean: true
+  dir: ./output/ger
+runtime:
+  fetch: true
+  cache_dir: ./cache
+asciidoc:
+  attributes:
+    page-pagination: yes
+    language: ger
+antora:
+  extensions:
+  - require: '@antora/lunr-extension'
