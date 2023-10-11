@@ -1,0 +1,42 @@
+name: Antora Multilang Documentation Build
+
+on: workflow_dispatch
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: https://info.rapidclipse.com/
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Node.js version
+      - name: Install Antora and the Antora Lunr Extension
+        run: npm i antora @antora/lunr-extension
+      - name: Generate EN Site
+        run: GIT_CREDENTIALS=https://${{ secrets.TOKEN }}:@github.com npx antora docs-en.yml --fetch --stacktrace
+      - name: Generate GER Site
+        run: GIT_CREDENTIALS=https://${{ secrets.TOKEN }}:@github.com npx antora docs-ger.yml --fetch --stacktrace
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          name: site
+          path: site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          token: ${{ secrets.TOKEN }}
+          artifact_name: site
