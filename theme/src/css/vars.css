@@ -30,7 +30,7 @@
   --monospace-font-weight-bold: 500;
   /* base */
   --body-background: var(--color-white);
-  --panel-background: var( --color-smoke-90);
+  --panel-background: var(--color-smoke-90);
   --panel-border-color: var(--color-gray-70);
   --scrollbar-track-color: var(--color-smoke-30);
   --scrollbar-thumb-color: var(--color-gray-10);
@@ -145,8 +145,8 @@
   --z-index-page-version-menu: 3;
   --z-index-navbar: 4;
 
-  /**/
-  --primary-color: #302AE6;
+  /* Light Mode */
+  --primary-color: #302ae6;
   --secondary-color: #536390;
   --font-color: #424242;
   --bg-color: #fff;
@@ -156,7 +156,7 @@
 }
 
 [data-theme="dark"] {
-  --primary-color: #9A97F3;
+  --primary-color: #9a97f3;
   --secondary-color: #818cab;
   --font-color: #e1e1ff;
   --bg-color: #161625;
@@ -164,7 +164,7 @@
   --panel-border-color: #8d95a8;
   --panel-background: #4a4f69;
   --scrollbar-track-color: #e1e1ff;
-  --scrollbar-thumb-color: #9A97F3;
+  --scrollbar-thumb-color: #9a97f3;
   --scrollbar_hover-thumb-color: #818cab;
   --page-version-menu-background: var(--primary-color);
   --panel-background-muted: var(--secondary-color);

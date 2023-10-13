@@ -13,7 +13,6 @@
 .page-versions .version-menu-toggle {
   color: inherit;
   background: var(--panel-background);
-
   border: none;
   outline: none;
   line-height: inherit;
@@ -22,7 +21,7 @@
   z-index: var(--z-index-page-version-menu);
 }
 
-.chevron{
+.chevron {
   fill: var(--icon-col);
   padding-top: 5px;
 }
@@ -33,7 +32,7 @@
   flex-direction: column;
   align-items: flex-end;
   background: linear-gradient(to bottom, var(--page-version-menu-background) 0%, var(--page-version-menu-background) 100%) no-repeat;
-  padding: 2rem 2.5rem 0.5rem 0rem;
+  padding: 2rem 2.5rem 0.5rem;
   position: absolute;
   top: 0;
   right: 0;

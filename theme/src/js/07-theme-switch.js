@@ -1,33 +1,36 @@
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+;(function () {
+  'use strict'
 
-function switchTheme(e) {
+  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]')
+
+  toggleSwitch.addEventListener('change', switchTheme, false)
+
+  function switchTheme (e) {
     if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.setAttribute('data-theme', 'dark')
+
+      // Check if localStorage is available before using it
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('theme', 'dark')
+      }
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light')
+
+      // Check if localStorage is available before using it
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('theme', 'light')
+      }
     }
-    else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }    
-}
-
-toggleSwitch.addEventListener('change', switchTheme, false);
-
-function switchTheme(e) {
-  if (e.target.checked) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark'); //add this
   }
-  else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light'); //add this
-  }    
-}
 
-const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  // Check if localStorage is available before using it
+  const currentTheme = (typeof localStorage !== 'undefined') ? localStorage.getItem('theme') : null
 
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme)
 
     if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
+      toggleSwitch.checked = true
     }
-}
+  }
+})()

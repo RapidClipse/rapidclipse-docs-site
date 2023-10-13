@@ -23,7 +23,7 @@
   outline: none;
   line-height: inherit;
   padding: 0;
-  height: calc(var(--toolbar-height) / 3.0);
+  height: calc(var(--toolbar-height) / 3);
   width: calc(var(--toolbar-height) / 2.5);
   margin: calc(var(--toolbar-height) / 8);
   margin-right: -0.25rem;
@@ -35,8 +35,7 @@
   }
 }
 
-.nav-toggle-icon
-{
+.nav-toggle-icon {
   fill: var(--icon-col);
 }
 
