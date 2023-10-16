@@ -2,6 +2,18 @@ site:
   title: RapidClipse Reference Manual
   url: https://info.rapidclipse.com/
   start_page: rc::index.adoc
+
+# see https://docs.antora.org/antora/2.3/playbook/configure-runtime/
+runtime:
+  cache_dir: ./.cache/antora
+  log:
+    # use pretty even on CI
+    format: pretty
+    # set to info to get details from the Antora extensions
+    level: info
+    # Antora exits with a non-zero exit code if an error is logged -> https://docs.antora.org/antora/latest/playbook/runtime-log-failure-level
+    failure_level: error
+  
 content:
   sources:
   - url: https://github.com/RapidClipse/rapidclipse
@@ -9,11 +21,14 @@ content:
     branches:
       - "11.0"
       - "12.0"
+      
 ui: 
   bundle:
     url: ./theme/build/ui-bundle.zip
 output:
   dir: ./site
+  
 antora:
   extensions:
   - require: '@antora/lunr-extension'
+  - require: '@antora/atlas-extension'
