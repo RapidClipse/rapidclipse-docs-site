@@ -11,7 +11,7 @@ content:
       - "12.0"
 ui: 
   bundle:
-    url: ./theme
+    url: ./theme/build/ui-bundle.zip
     snapshot: true
 output:
   dir: ./site
