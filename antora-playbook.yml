@@ -11,7 +11,7 @@ content:
       - "12.0"
 ui: 
   bundle:
-    url: ./theme/build/ui-bundle.zip
+    url: https://github.com/EliasKeilhammer-XDEV/rapidclipse-documentation-theme/releases/download/v1.15.0/rapidclipse-documentation-theme-v1.15.0.zip
     snapshot: true
 output:
   dir: ./site
