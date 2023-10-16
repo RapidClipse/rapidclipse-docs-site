@@ -1,12 +1,9 @@
 site:
   title: RapidClipse Reference Manual
   url: https://info.rapidclipse.com/
-  start_page: index::index.adoc
+  start_page: rc11::index.adoc
 content:
   sources:
-  - url: . # common module containing just the main index
-    start_path: docs
-    branches: HEAD
   - url: https://github.com/EliasKeilhammer-XDEV/AntoraTest
     start_path: docs
     branches: [main]
