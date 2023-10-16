@@ -31,4 +31,3 @@ output:
 antora:
   extensions:
   - require: '@antora/lunr-extension'
-  - require: '@antora/atlas-extension'
