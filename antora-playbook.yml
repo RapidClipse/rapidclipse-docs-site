@@ -1,6 +1,7 @@
 site:
   title: RapidClipse Reference Manual
   url: https://info.rapidclipse.com/
+  start_page: AntoraTest::index.adoc
 content:
   sources:
   - url: https://github.com/EliasKeilhammer-XDEV/AntoraTest
