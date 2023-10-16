@@ -4,9 +4,11 @@ site:
   start_page: rc11::index.adoc
 content:
   sources:
-  - url: https://github.com/EliasKeilhammer-XDEV/AntoraTest
+  - url: https://github.com/RapidClipse/rapidclipse
     start_path: docs
-    branches: [main]
+    branches:
+      - "11.0"
+      - "12.0"
 ui: 
   bundle:
     url: ./theme/build/ui-bundle.zip
