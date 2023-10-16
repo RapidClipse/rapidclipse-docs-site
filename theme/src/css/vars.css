@@ -153,6 +153,7 @@
   --heading-color: #292922;
   --icon-col: var(--color-black);
   --slider-bg-img: url(../img/sun.svg);
+  --chevron-img: url(../img/chevron-down-dark.svg);
 }
 
 [data-theme="dark"] {
@@ -171,4 +172,5 @@
   --navbar-menu-background: var(--panel-background);
   --icon-col: #fff;
   --slider-bg-img: url(../img/moon-stars-fill.svg);
+  --chevron-img: url(../img/chevron-down-white.svg);
 }

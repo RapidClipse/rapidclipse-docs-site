@@ -24,10 +24,14 @@
           <a class="navbar-item" href="https://rapidclipse.com/">RapidClipse Home</a>
         </div>
         <div class="theme-switch-wrapper">
-          <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"/>
-          </label>
+          <input type="checkbox" class="checkbox" onclick="toggleDarkThemeMode(this)" id="check">
+          <div class="toggle-content">
+            <label class="label" for="check">
+              <span>🌜</span>
+              <span>🌞</span>
+              <div class="ball"></div>
+            </label>
+          </div>
         </div>
       </div>
     </div>

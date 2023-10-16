@@ -1,36 +1,74 @@
-;(function () {
-  'use strict'
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 
-  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]')
+function toDarkTheme (resolve) {
+  localStorage.setItem('theme', 'dark')
+  document.querySelector('html').setAttribute('data-theme', 'dark')
 
-  toggleSwitch.addEventListener('change', switchTheme, false)
+  // Update highlight js theme
+  enableHightLightDarkTheme(true)
+  // Promise.resolve if existing
+  resolve && resolve()
+}
 
-  function switchTheme (e) {
-    if (e.target.checked) {
-      document.documentElement.setAttribute('data-theme', 'dark')
+function toLightTheme (resolve) {
+  localStorage.setItem('theme', 'light')
+  document.querySelector('html').setAttribute('data-theme', 'light')
 
-      // Check if localStorage is available before using it
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem('theme', 'dark')
-      }
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light')
+  // Update highlight js theme
+  enableHightLightDarkTheme(false)
+  // Promise.resolve if existing
+  resolve && resolve()
+}
 
-      // Check if localStorage is available before using it
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem('theme', 'light')
-      }
+// Update highlight js to dark theme if dark = true
+function enableHightLightDarkTheme (dark) {
+  var hljsCssLink = document.getElementById('highlight-style-lnk')
+  if (hljsCssLink) {
+    var currentHref = hljsCssLink.getAttribute('href')
+    var cssHref = currentHref.replace('-dark', '-light')
+    if (dark) {
+      cssHref = currentHref.replace('-light', '-dark')
     }
+    hljsCssLink.setAttribute('href', cssHref)
+  } else {
+    console.log('Failed to find highlight-style-lnk css link element in page, can not swap theme')
   }
+}
 
-  // Check if localStorage is available before using it
-  const currentTheme = (typeof localStorage !== 'undefined') ? localStorage.getItem('theme') : null
+function performThemeSwitch (checkbox, switchBall) {
+  setTimeout(function () {
+    const themeSwitchPromise = new Promise((resolve) => {
+      if (checkbox.checked) {
+        toDarkTheme(resolve)
+      } else {
+        toLightTheme(resolve)
+      }
+    })
 
-  if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme)
+    themeSwitchPromise.finally(function () {
+      switchBall.innerHTML = ''
+    })
+  }, 100)
+}
 
-    if (currentTheme === 'dark') {
-      toggleSwitch.checked = true
-    }
-  }
-})()
+// create the loader div
+const loader = document.createElement('div')
+loader.classList.add('lds-dual-ring')
+
+function toggleDarkThemeMode (checkbox) {
+  const switchBall = document.querySelector('.theme-switch-wrapper .toggle-content .label .ball')
+  switchBall.appendChild(loader)
+  performThemeSwitch(checkbox, switchBall)
+}
+
+function isDarkTheme () {
+  return localStorage.getItem('theme') === 'dark' ? 'checked' : 'unchecked'
+}
+
+// init
+if (localStorage.getItem('theme') === 'dark') {
+  toDarkTheme()
+} else {
+  toLightTheme()
+}
