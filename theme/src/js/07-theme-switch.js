@@ -6,7 +6,7 @@ function toDarkTheme (resolve) {
   document.querySelector('html').setAttribute('data-theme', 'dark')
 
   // Update highlight js theme
-  enableHightLightDarkTheme(true)
+  //enableHightLightDarkTheme(true)
   // Promise.resolve if existing
   resolve && resolve()
 }
@@ -16,7 +16,7 @@ function toLightTheme (resolve) {
   document.querySelector('html').setAttribute('data-theme', 'light')
 
   // Update highlight js theme
-  enableHightLightDarkTheme(false)
+  //enableHightLightDarkTheme(false)
   // Promise.resolve if existing
   resolve && resolve()
 }
