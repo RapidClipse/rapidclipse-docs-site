@@ -19,7 +19,6 @@ content:
   - url: https://github.com/RapidClipse/rapidclipse
     start_path: docs
     branches:
-      - "11.0"
       - "12.0"
       - "13.0"
       - "14.0"
