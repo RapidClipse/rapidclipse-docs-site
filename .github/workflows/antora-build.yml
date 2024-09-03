@@ -20,9 +20,9 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Node.js version
+          node-version: 20  # Node.js version
       - name: Install Antora and the Antora Lunr Extension
-        run: npm i antora@3.1.2 @antora/lunr-extension
+        run: npm i antora@3.1.9 @antora/lunr-extension
       - name: Generate Site
         run: GIT_CREDENTIALS=https://${{ secrets.TOKEN }}:@github.com npx antora antora-playbook.yml --fetch --stacktrace
       - name: Setup Pages
